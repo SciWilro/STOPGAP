@@ -1,1 +1,0 @@
-STOPGAP_data/*.RData filter=lfs diff=lfs merge=lfs -text

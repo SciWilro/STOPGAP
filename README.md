@@ -150,6 +150,6 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
 * vep.severity: severity scores defined according to gene consequence terms.
 * v2g.score: variant to gene causality mapping score. The contributions to v2g Score are summarized on a separate Gene Scoring Wiki page.
 
-## R Shiny web application ## 
+## R Shiny web application  
 http://ec2-54-152-192-180.compute-1.amazonaws.com:3838/SWApp/.  
 The repository ( https://github.com/StatGenPRD/SWApp )

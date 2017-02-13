@@ -185,15 +185,13 @@ Combine.bestld.data(data.file="./GWAS_LD_var2gene/Mergedata_VEPsimplified_withGe
 # P-value bins (-log10(P)): > 12 as 1; 8-12 as 2 and <8 as 3.
 mesh.gene(data.file="./GWAS_LD_var2gene/Mergedata_VEPsimplified_withGene_r2_0.7_MHC_genescore_generank_bestLD_cluster.RData")
 
-# merge.omim: Merge stopgap.gene.mesh with latest OMIM/Orphanet data processed on 11/13/2104
-# Create merge between OMIM, Orphanet, and stopgap.gene.mesh -> stopgap.gwas.omim
+# merge.orphanet: Merge stopgap.gene.mesh with latest Orphanet data processed on 11/13/2104
+# Create merge between Orphanet, and stopgap.gene.mesh 
 # Change "Link" to "pubmedid" and add the OrphID as "pubmedid" when the Source=="Orphanet". 
 # Set Rank=1, pval2 as 0 and GeneScore=max(stopgap.gene.mesh$gene.score)
 # Remove MSH.TOP and OrphID columms and change the names to being consistent with stopgap.gene.mesh
-# Merge the two datasets by using all column names of omim.nomhc data. 
-#  Basically it is adding all rows of omim.nomhc to the stopgap.gene.mesh data 
-merge.omim(gm.file = "./Mesh_gene/STOPGAP_r2_0.7_rmMHC_bestLD_gene_mesh.RData",
-                       omim.file = "./Data/omim.RData",
+merge.orphanet(gm.file = "./Mesh_gene/STOPGAP_r2_0.7_rmMHC_bestLD_gene_mesh.RData",
+                       orphanet.file = "./Data/orphanet.RData",
 					   gencode.file="./Data/gencode_v19_clean.RData")
 
 revice.bestld(gm.file = "./GWAS_LD_var2gene/Mergedata_VEPsimplified_withGene_r2_0.7_MHC_genescore_generank_bestLD_cluster.RData",

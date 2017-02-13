@@ -1958,19 +1958,17 @@ mesh.gene <- function(data.file="./GWAS_LD_var2gene/Mergedata_VEPsimplified_with
   
 }
 
-# merge.omim: Merge stopgap.gene.mesh with latest OMIM/Orphanet data processed on 11/13/2104
-# Create merge between OMIM, Orphanet, and stopgap.gene.mesh -> stopgap.gwas.omim
+# merge.orphanet: Merge stopgap.gene.mesh with latest Orphanet data processed on 11/13/2104
+# Create merge between Orphanet, and stopgap.gene.mesh
 # Change "Link" to "pubmedid" and add the OrphID as "pubmedid" when the Source=="Orphanet". 
 # Set Rank=1, pval2 as 0 and GeneScore=max(stopgap.gene.mesh$gene.score)
 # Remove MSH.TOP and OrphID columms and change the names to being consistent with stopgap.gene.mesh
-# Merge the two datasets by using all column names of omim.nomhc data. 
-#  Basically it is adding all rows of omim.nomhc to the stopgap.gene.mesh data 
-merge.omim <- function(gm.file = "./Mesh_gene/STOPGAP_r2_0.7_rmMHC_bestLD_gene_mesh.RData",
-                       omim.file = "./Data/omim.RData",
+merge.orphanet <- function(gm.file = "./Mesh_gene/STOPGAP_r2_0.7_rmMHC_bestLD_gene_mesh.RData",
+                       orphanet.file = "./Data/orphanet.RData",
 					   gencode.file="./Data/gencode_v19_clean.RData"
 					   ){  
   load(gm.file)
-  load(omim.file)
+  load(orphanet.file)
   load(gencode.file)
   
   
@@ -1979,21 +1977,21 @@ merge.omim <- function(gm.file = "./Mesh_gene/STOPGAP_r2_0.7_rmMHC_bestLD_gene_m
   new.gene.name<-new.gene.name[!duplicated(new.gene.name),]
  
   stopgap.gene.mesh <- stopgap.bestld.gene.mesh
-  omim$var2gene.score <- max(stopgap.bestld.gene.mesh$var2gene.score)
-  omim$gene.score <- max(stopgap.bestld.gene.mesh$gene.score)
-  omim$gene.rank.max <- 1
-  omim$gene.rank.min <- 1
-  omim$pvalue <- 0
-  omim$best.gene <- omim$gene
+  orphanet$var2gene.score <- max(stopgap.bestld.gene.mesh$var2gene.score)
+  orphanet$gene.score <- max(stopgap.bestld.gene.mesh$gene.score)
+  orphanet$gene.rank.max <- 1
+  orphanet$gene.rank.min <- 1
+  orphanet$pvalue <- 0
+  orphanet$best.gene <- omim$gene
 
-  omim <- omim[,c("disease","pubmedid","gene",         
+  orphanet <- orphanet[,c("disease","pubmedid","gene",         
   "msh","msh.tree","msh.cat","var2gene.score",       
   "gene.score","best.gene","gene.rank.max","gene.rank.min","pvalue","source")]
   
   stopgap.gene.mesh$pubmedid=as.character(stopgap.gene.mesh$pubmedid)
-  omim$pubmedid=as.character(omim$pubmedid)
+  orphanet$pubmedid=as.character(orphanet$pubmedid)
  
-  stopgap.gene.mesh <- sbind(stopgap.gene.mesh, omim)
+  stopgap.gene.mesh <- sbind(stopgap.gene.mesh, orphanet)
   
   stopgap.gene.mesh <- rename(stopgap.gene.mesh, c(best.gene= 'gene.best', best.evidence="evidence.best",
                                                    best.gene.score='gene.score.best', distance.from.gene="gene.distance",
@@ -2051,9 +2049,9 @@ var=c("gene","gene.v19","disease","msh","pvalue","pubmedid","source","snp.gwas",
 
  stopgap.gene.mesh$pubmedid=ifelse(stopgap.gene.mesh$source == "PheWAS","20335276",stopgap.gene.mesh$pubmedid)
  write.table(stopgap.gene.mesh,
-              "stopgap.MHC.gene.mesh.txt",
+              "stopgap.gene.mesh.txt",
               sep = "\t", row.names = FALSE, quote = F, na = "")  
-  save(stopgap.gene.mesh, file = "stopgap.MHC.gene.mesh.RData", compress = TRUE)   
+  save(stopgap.gene.mesh, file = "stopgap.gene.mesh.RData", compress = TRUE)   
   
   invisible(stopgap.gene.mesh)
   
@@ -2119,9 +2117,9 @@ var=c("gene","gene.v19","disease","msh","pvalue","pubmedid","source","snp.gwas",
 
   stopgap.bestld <- stopgap.bestld[,var]
   write.table(stopgap.bestld,
-              "stopgap.bestld1.txt",
+              "stopgap.bestld.txt",
               sep = "\t", row.names = FALSE, quote = F, na = "")  
-  save(stopgap.bestld, file = "stopgap.bestld1.RData", compress = TRUE)   
+  save(stopgap.bestld, file = "stopgap.bestld.RData", compress = TRUE)   
   
   invisible(stopgap.bestld)
   

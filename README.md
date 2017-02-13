@@ -19,7 +19,7 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
 	
   The details of the zipped folder are as follows:
   
-    1.a.1) Source/Data
+    1.a.1) /Data
       Genetic association data
       GraspFullDataset2.zip: grasp data
       gwas_catalog_v1.0-associations_e85_r2016-08-01.tsv: nhgri data
@@ -29,11 +29,11 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
       MeSH_Aug2016.txt: the MeSH term data
       omim.RData: OMIM&Orphanet dataset
 		
-    1.a.1.1) Source/Data/1KG_AF
+    1.a.1.1) /Data/1KG_AF
       gws.frq.RData: Allele frequencies calculated based on 1000G
       
  
-    1.a.1.2) Source/Data/genomic_resource
+    1.a.1.2) /Data/genomic_resource
       The functional genomics data
       eQTL_single_44Tissues.RData and eQTL_multi_9Tissues.RData: eQTL data
       chic.RData: Promoter Capture Hi-C
@@ -45,7 +45,7 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
       cato.RData: CATO score data
       gwas.ld.vep.RData: VEP data
 		
-    1.a.2) Source/STOPGAP2_LDResults
+    1.a.2) /STOPGAP2_LDResults
       LD results calculated based on the genetic association data
       rsID_Coordinates.txt: Coordinate
       chrN.labeled.ld, where N=1..22 and X: LD SNPs data

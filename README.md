@@ -81,7 +81,7 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
 
 * stopgap_chr1.RData, ..., stopgap_chrX.RData: the most comprehensive STOPGAP data (by chromosome) merged from GWAS data, SNP LD data, SNP cluster data and var2gene mapping data, including all possible ways to map LD variants to genes. 
 * stopgap.bestld.RData: this is grouped by publication-trait-GWAS and GWAS SNP-gene, reducing each reported genetic association to the best variant-to-gene hypothesis (highest gene score) for each possible gene mapping.
-* stopgap.gene.mesh.RData: this is grouped by gene-trait, selecting the best variant-to-gene mapping for all genetic associations that could connect a gene to a trait. Finally the data was merged with latest OMIM/Orphanet data.
+* stopgap.gene.mesh.RData: this is grouped by gene-trait, selecting the best variant-to-gene mapping for all genetic associations that could connect a gene to a trait. Finally the data was merged with latest Orphanet data.
 
 **Alphabetical order for the definition of the columns in above STOPGAP datasets**
 
@@ -142,7 +142,7 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
 * snp.gwas: the identifier (generally dbSNP141 RS ID) mapped from the original GWAS SNP id (snp.gwas.orig) of the SNPs reported to be associated with disease.
 * snp.gwas.orig:  the original GWAS SNP id of the SNPs reported to be associated with disease. 
 * snp.ld: a SNP in linkage disequilibrium (LD) with snp.gwas that provides a plausible connection to gene.  
-* source: the GWAS data source: NHGRI GWAS catalog, GRASP, GWASdb2, PheWAS and STABILITY/SOILD baseline association. Note the GWAS data are merged by the order of nhgri > grasp > gwasdb2 > PheWAS > STABILITY/SOLID. 
+* source: the GWAS data source: NHGRI GWAS catalog, GRASP, GWASdb2, and PheWAS baseline association. Note the GWAS data are merged by the order of nhgri > grasp > gwasdb2 > PheWAS. 
 * vep.phylop: 100-way vertebrate PhyloP score. 
 * vep.conseq: The consequence of snp.ld on the protein sequence from the Ensembl Variant Effect Prediction data. 
 * vep.aa: the amino acid change for snp.ld from the Ensembl Variant Effect Prediction (VEP) database. 

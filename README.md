@@ -27,7 +27,7 @@ This STOPGAP analysis pipeline was implemented using a combination of shell, R, 
       phewas-catalog.csv: phewas data
       gencode_v19_clean.RData: Gencode data v19
       MeSH_Aug2016.txt: the MeSH term data
-      omim.RData: OMIM&Orphanet dataset
+      orphanet.RData: Orphanet dataset
 		
     1.a.1.1) Source/Data/1KG_AF
       gws.frq.RData: Allele frequencies calculated based on 1000G
